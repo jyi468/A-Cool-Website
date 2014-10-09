@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+@model MyWebsiteEntity.Models.CommentModel
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - MyWebsiteEntity</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/Scripts/jquery")
+    @Styles.Render("~/Scripts/PandS")
+</head>
+<body>
+<div class="model-container dp-none dp-block">
+    <button class="Button borderless close visible close-model" style="right: 31px;">
+        <em class="fa fa-times fa-2x"></em>
+    </button>
+    <div class="modelpopup">
+        <div class="model-box">
+            <img src="@Html.DisplayFor(Model => Model.imgurl)" />
+        </div>
+        <div class="model-box">
+            <div class="pinDescription">
+                <div class="pinDescriptionComment detailed">
+                    <a class="userThumbContainer" href="#">
+                        <img class="userThumb" alt="" src="/images/profile-30.jpg" />
+                    </a>
+                    <div class="commenterNameCommentText">
+                        <div class="commenterWrapper">
+                            <a class="commentDescriptionCreator" href="#">
+                                original poster
+                            </a>
+                            <span class="commentDescriptionTimeAgo">
+                                • 4 days ago
+                            </span>
+                        </div>
+                        <h1 class="commentDescriptionContent">
+                            @Html.DisplayFor(Model => Model.Description)
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="PinCommentList">
+                <div class="commentsContainer">
+                    <ul>
+                        @if (Model.Comments != null)
+                        {
+
+                                <li>
+                                    <div class="pinDescriptionComment detailed">
+                                        <a class="userThumbContainer" href="#">
+                                            <img class="userThumb" alt="" src="/images/profile-30.jpg" />
+                                        </a>
+                                        <div class="commenterNameCommentText">
+                                            <div class="commenterWrapper">
+                                                <a class="commentDescriptionCreator" href="#">
+                                                    @foreach (var user in Model.UserIds)
+                                                    {
+                                                        @Html.DisplayFor(user)
+                                                    }
+                                                </a>
+                                                <span class="commentDescriptionTimeAgo">
+                                                    • 4 days ago
+                                                </span>
+                                            </div>
+                                            <h1 class="commentDescriptionContent">
+                                                @foreach (var item in Model.Comments)
+                                                {
+                                                    @Html.DisplayFor(item)
+                                                }
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="pinDescriptionComment detailed">
+                <a class="userThumbContainer" href="#">
+                    <img class="userThumb" alt="" src="/images/profile-30.jpg" />
+                </a>
+                <div class="commenterNameCommentText">
+                    <div class="commenterWrapper">
+                        <a class="commentDescriptionCreator" href="#">
+                            July Mark
+                        </a>
+                        <span class="commentDescriptionTimeAgo">
+                            • This is you
+                        </span>
+                    </div>
+@using (Html.BeginForm("Comment", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+                    <h1 class="commentDescriptionContent">
+                        <textarea class="content" placeholder="Comment this post" name="Comment"></textarea>
+                    </h1>
+                    <p>
+                        <button class="Button btn primary" type="button">
+                            <span class="buttonText">
+                                Submit
+                            </span>
+                        </button>
+                    </p>
+}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+</html>
