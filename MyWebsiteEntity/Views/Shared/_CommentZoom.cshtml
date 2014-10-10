@@ -16,7 +16,7 @@
     </button>
     <div class="modelpopup">
         <div class="model-box">
-            <img src="@Html.DisplayFor(Model => Model.imgurl)" />
+            <img src="@Html.DisplayFor(m => m.imgurl)" />
         </div>
         <div class="model-box">
             <div class="pinDescription">
@@ -34,7 +34,7 @@
                             </span>
                         </div>
                         <h1 class="commentDescriptionContent">
-                            @Html.DisplayFor(Model => Model.Description)
+                            @Html.DisplayFor(m => m.Description)
                         </h1>
                     </div>
                 </div>
@@ -42,9 +42,10 @@
             <div class="PinCommentList">
                 <div class="commentsContainer">
                     <ul>
-                        @if (Model.Comments != null)
+                        @if (m.Comments != null)
                         {
-
+                            for (var i = 0; i < m.Comments.Count(); i++)
+                            {
                                 <li>
                                     <div class="pinDescriptionComment detailed">
                                         <a class="userThumbContainer" href="#">
@@ -53,24 +54,20 @@
                                         <div class="commenterNameCommentText">
                                             <div class="commenterWrapper">
                                                 <a class="commentDescriptionCreator" href="#">
-                                                    @foreach (var user in Model.UserIds)
-                                                    {
-                                                        @Html.DisplayFor(user)
-                                                    }
+                                                     @Html.DisplayFor(m.UserNames.Item(i))
+
                                                 </a>
                                                 <span class="commentDescriptionTimeAgo">
                                                     • 4 days ago
                                                 </span>
                                             </div>
                                             <h1 class="commentDescriptionContent">
-                                                @foreach (var item in Model.Comments)
-                                                {
-                                                    @Html.DisplayFor(item)
-                                                }
+                                                    @Html.DisplayFor(m.Comments.Item(i))
                                             </h1>
                                         </div>
                                     </div>
                                 </li>
+                            }
                         }
                     </ul>
                 </div>
