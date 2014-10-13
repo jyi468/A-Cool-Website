@@ -16,7 +16,7 @@
     </button>
     <div class="modelpopup">
         <div class="model-box">
-            <img src="@Html.DisplayFor(m => m.imgurl)" />
+            <img src="@Url.Content(Model.imgurl)" />
         </div>
         <div class="model-box">
             <div class="pinDescription">
@@ -34,7 +34,7 @@
                             </span>
                         </div>
                         <h1 class="commentDescriptionContent">
-                            @Html.DisplayFor(m => m.Description)
+                            @Html.DisplayFor(model => model.Description)
                         </h1>
                     </div>
                 </div>
@@ -42,9 +42,9 @@
             <div class="PinCommentList">
                 <div class="commentsContainer">
                     <ul>
-                        @if (m.Comments != null)
+                        @if (Model.Comments != null)
                         {
-                            for (var i = 0; i < m.Comments.Count(); i++)
+                            for (var i = 0; i < Model.Comments.Count(); i++)
                             {
                                 <li>
                                     <div class="pinDescriptionComment detailed">
@@ -54,15 +54,14 @@
                                         <div class="commenterNameCommentText">
                                             <div class="commenterWrapper">
                                                 <a class="commentDescriptionCreator" href="#">
-                                                     @Html.DisplayFor(m.UserNames.Item(i))
-
+                                                     @Html.DisplayFor(model => Model.UserNames[i])
                                                 </a>
                                                 <span class="commentDescriptionTimeAgo">
                                                     • 4 days ago
                                                 </span>
                                             </div>
                                             <h1 class="commentDescriptionContent">
-                                                    @Html.DisplayFor(m.Comments.Item(i))
+                                                    @Html.DisplayFor(model => Model.Comments[i])
                                             </h1>
                                         </div>
                                     </div>
