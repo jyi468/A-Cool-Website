@@ -1,0 +1,22 @@
+﻿@model MyWebsiteEntity.Models.SingleCommentModel
+
+<li>
+    <div class="pinDescriptionComment detailed">
+        <a class="userThumbContainer" href="#">
+            <img class="userThumb" alt="" src="/images/profile-30.jpg" />
+        </a>
+        <div class="commenterNameCommentText">
+            <div class="commenterWrapper">
+                <a class="commentDescriptionCreator" href="#">
+                    @Html.DisplayFor(model => Model.UserName)
+                </a>
+                <span class="commentDescriptionTimeAgo">
+                    • 4 days ago
+                </span>
+            </div>
+            <h1 class="commentDescriptionContent">
+                @Html.DisplayFor(model => Model.Comment)
+            </h1>
+        </div>
+    </div>
+</li>

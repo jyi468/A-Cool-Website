@@ -1,15 +1,5 @@
-﻿<!DOCTYPE html>
-@model MyWebsiteEntity.Models.CommentModel
+﻿@model MyWebsiteEntity.Models.CommentModel
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - MyWebsiteEntity</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/Scripts/jquery")
-    @Styles.Render("~/Scripts/PandS")
-</head>
-<body>
 <div class="model-container dp-none dp-block">
     <button class="Button borderless close visible close-model" style="right: 31px;">
         <em class="fa fa-times fa-2x"></em>
@@ -27,7 +17,7 @@
                     <div class="commenterNameCommentText">
                         <div class="commenterWrapper">
                             <a class="commentDescriptionCreator" href="#">
-                                original poster
+                                @Html.DisplayFor(model => model.OP)
                             </a>
                             <span class="commentDescriptionTimeAgo">
                                 • 4 days ago
@@ -78,29 +68,26 @@
                 <div class="commenterNameCommentText">
                     <div class="commenterWrapper">
                         <a class="commentDescriptionCreator" href="#">
-                            July Mark
+                            @User.Identity.Name
                         </a>
                         <span class="commentDescriptionTimeAgo">
                             • This is you
                         </span>
                     </div>
-@using (Html.BeginForm("Comment", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-                    <h1 class="commentDescriptionContent">
-                        <textarea class="content" placeholder="Comment this post" name="Comment"></textarea>
-                    </h1>
-                    <p>
-                        <button class="Button btn primary" type="button">
-                            <span class="buttonText">
-                                Submit
-                            </span>
-                        </button>
-                    </p>
-}
+                    <form id="commentForm">
+                        <h1 class="commentDescriptionContent">
+                            <textarea form="commentForm" class="content" placeholder="Comment this post" name="comment"></textarea>
+                        </h1>
+                        <p>
+                            <button class="Button btn primary" type="submit" name="@Url.Action("Comment", "Account", new { id = Model.EntityId, url = Model.imgurl })">
+                                <span class="buttonText">
+                                    Submit
+                                </span>
+                            </button>
+                        </p>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-    </body>
-</html>
