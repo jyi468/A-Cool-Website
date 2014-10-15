@@ -31,7 +31,7 @@
             </div>
             <div class="PinCommentList">
                 <div class="commentsContainer">
-                    <ul>
+                    <ul class="listComments">
                         @if (Model.Comments != null)
                         {
                             for (var i = 0; i < Model.Comments.Count(); i++)
@@ -74,18 +74,16 @@
                             • This is you
                         </span>
                     </div>
-                    <form id="commentForm">
                         <h1 class="commentDescriptionContent">
-                            <textarea form="commentForm" class="content" placeholder="Comment this post" name="comment"></textarea>
+                            <textarea class="commentContent" placeholder="Comment this post" name="comment"></textarea>
                         </h1>
                         <p>
-                            <button class="Button btn primary" type="submit" name="@Url.Action("Comment", "Account", new { id = Model.EntityId, url = Model.imgurl })">
-                                <span class="buttonText">
+                            <button class="Button btn primary" id=@Model.EntityId name=@Model.imgurl>
+                                <span class="buttonText" id=@Url.Action("Comment", "Account")>
                                     Submit
                                 </span>
                             </button>
                         </p>
-                    </form>
                 </div>
             </div>
         </div>
