@@ -5,12 +5,20 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebsiteEntity", "MyWebsiteEntity\MyWebsiteEntity.csproj", "{579A5A88-87B0-46E0-8876-374FEC61156A}"
 EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "MyWebsiteEntity.Azure3", "MyWebsiteEntity.Azure3\MyWebsiteEntity.Azure3.ccproj", "{7E425C38-AA9D-4872-99BE-5DC4EB72AF07}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 1
+		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://jyiprojects.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
+		SccProjectUniqueName1 = MyWebsiteEntity\\MyWebsiteEntity.csproj
+		SccProjectName1 = MyWebsiteEntity
+		SccLocalPath1 = MyWebsiteEntity
+		SccProjectUniqueName2 = MyWebsiteEntity.Azure3\\MyWebsiteEntity.Azure3.ccproj
+		SccProjectName2 = MyWebsiteEntity.Azure3
+		SccLocalPath2 = MyWebsiteEntity.Azure3
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +29,10 @@ Global
 		{579A5A88-87B0-46E0-8876-374FEC61156A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{579A5A88-87B0-46E0-8876-374FEC61156A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{579A5A88-87B0-46E0-8876-374FEC61156A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E425C38-AA9D-4872-99BE-5DC4EB72AF07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E425C38-AA9D-4872-99BE-5DC4EB72AF07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E425C38-AA9D-4872-99BE-5DC4EB72AF07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E425C38-AA9D-4872-99BE-5DC4EB72AF07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
