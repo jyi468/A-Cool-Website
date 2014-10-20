@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - MyWebsiteEntity</title>
+
+    @Styles.Render("~/Content/css")
+    @RenderSection("head", false)
+</head>
+<body>
+    <div class="contentWrapper">
+        <div class="login">
+            <h1 class="logo2"></h1>
+            <h2 class="homeText">
+                Create your own social network site.
+            </h2>
+            <div>
+                @RenderBody()
+
+                @Scripts.Render("~/bundles/jquery")
+                @RenderSection("Scripts", required: false)
+                @Scripts.Render("~/Scripts/jquery")
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

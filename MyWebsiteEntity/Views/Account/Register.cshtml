@@ -1,0 +1,93 @@
+﻿@model MyWebsiteEntity.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        @*<ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </li>
+        </ol>*@
+
+        <div class="loginbuttons model model-register">
+
+            <div class="standardForm">
+                <h1 class="redcentered">
+                    Register
+                </h1>
+                <ul>
+                    <li>
+                        <h3>
+                            @Html.LabelFor(m => m.EmailAddress)
+                        </h3>
+                        <div>
+
+                            @Html.TextBoxFor(m => m.EmailAddress, new { style = "width: 93%" })
+                            @Html.ValidationMessageFor(m => m.EmailAddress)
+                        </div>
+                    </li>
+                    <li>
+                        <h3>
+                            @Html.LabelFor(m => m.UserName)
+                        </h3>
+                        <div>
+                            @Html.TextBoxFor(m => m.UserName, new { style = "width: 93%" })
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </div>
+                    </li>
+                    <li>
+                        <h3>
+                            @Html.LabelFor(m => m.Password)
+                        </h3>
+                        <div>
+
+                            @Html.PasswordFor(m => m.Password, new { style = "width: 93%" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                    </li>
+                    <li>
+                        <h3>
+                            @Html.LabelFor(m => m.ConfirmPassword)
+                        </h3>
+                        <div>
+
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { style = "width: 93%" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                        </div>
+                    </li>
+
+
+                </ul>
+                <div class="formFooter">
+                    <div class="formFooterButtons">
+                        <input type="button" class="LoginButton btn big " value="Go Back Home" onclick="location.href='@Url.Action("Index","Home")'" />
+                        <input type="submit" value="Register" class="Button primary btn big" />
+                    </div>
+                </div>
+                <p style="vertical-align: bottom; float:left; margin-left:28px">Already have an account? @Html.ActionLink("Login", "Login") here.</p>
+            </div>
+        </div>
+
+        
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

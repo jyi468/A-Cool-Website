@@ -1,0 +1,1296 @@
+﻿html {
+    background-color: #E3E3E3;
+}
+
+body,button, input, select, textarea {
+    font-family: "Helvetica Neue",arial,sans-serif;
+    font-size: 12px;
+    color: #211922;
+}
+
+a {
+    color: rgb(113, 113, 113);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header {
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+    background: none repeat scroll 0% 0% #fff;
+    height: 44px;
+    position: fixed;
+    z-index: 670;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+
+#header-inner {
+    max-width: 1250px;
+    min-width:750px;
+    margin: 0px auto;
+    display: block;
+    height: 29px;
+    overflow: visible;
+    padding: 7px 0px 0px;
+    z-index: 680;
+}
+
+#header-left {
+    float: left;
+    margin-left: 7px;
+    width: 250px;
+}
+
+.logo {
+    left: 50%;
+    margin-left: -52px;
+    margin-top: 16px;
+    position: absolute;
+    top: -7px;
+    height: 26px;
+    width: 104px;
+    background: url("/Images/logo.png") no-repeat scroll 0px 0px transparent;
+}
+
+#header-right {
+    float: right;
+    margin-right: 7px;
+    width: 250px;
+}
+
+/*** BEGIN #header-left CONTENT ***/
+.Button {
+    float: left;
+    margin-right: 6px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+.Button>button {
+    height: 30px;
+    width: 36px;
+    border-radius: 3px 3px 3px 3px;
+    background: linear-gradient(rgb(255, 255, 255), rgb(240, 240, 240)) ;
+    border: 1px solid rgb(204, 204, 204);
+    text-shadow: 0px 1px rgb(255, 255, 255);
+}
+
+.Button>button em {
+    color:#bdbdbd;
+    position: relative;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+.Button>button:hover {
+    background-image: linear-gradient(#e3262e,#ab171e);
+    box-shadow:0 1px 3px 0 rgba(0,0,0,0.22);
+    background-color:#ab171e;
+    border:1px solid rgb(113, 113, 113);
+    text-shadow:0 -1px rgba(0,0,0,0.11);
+}
+
+.Button>button:hover em{
+    color:#fff;
+    vertical-align:middle;
+}
+
+/*** END Categories ***/
+
+/*** BEGIN Search ***/
+Header .SearchForm {
+    float: left;
+    position: relative;
+    width: 194px;
+}
+
+.SearchForm .field {
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.07) inset;
+    background: none repeat scroll 0% 0% rgb(250, 249, 247);
+    border: 1px solid rgb(204, 204, 204);
+    color: rgb(113, 113, 113);
+    font-size: 13px;
+    font-weight: bold;
+    padding: 6px 30px 6px 9px;
+    z-index: 670;
+}
+
+.SearchForm .submit {
+    height: 17px;
+    width: 16px;
+    border: 0px ;
+    position: absolute;
+    right: 9px;
+    top: 7px;
+    z-index: 671;
+    margin-right: 3px;
+    background-color: transparent;
+}
+
+.SearchForm .submit em {
+    color: #bdbdbd;
+    top: -4px;
+    position: relative;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+/*** END Search ***/
+
+/****************************************/
+/******* END #header-left CONTENT *******/
+/****************************************/
+
+/*******************************************/
+/******* BEGIN #header-right CONTENT *******/
+/*******************************************/
+
+/*** BEGIN Profile ***/
+
+.ProfileWrapper {
+    float: left;
+    width: 159px;
+}
+
+.Profile {
+    background: linear-gradient(rgb(255, 255, 255), rgb(240, 240, 240)) ;
+    border-radius: 3px 3px 3px 3px;
+    border: 1px solid rgb(204, 204, 204);
+    /*margin-right: 7px;*/
+    position: relative;
+    height: 28px;
+}
+
+.Profile a {
+    color: rgb(113, 113, 113);
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Profile:hover {
+    /*margin-right: 7px;*/
+    border-radius: 3px 3px 3px 3px;
+    border: 1px solid transparent;
+    background: linear-gradient(to bottom,  #e3262e 0%,#ab171e 100%);
+}
+
+.Profile a:hover {
+    color:#ffffff;
+}
+
+.Profile .ProfileLink {
+    float: left;
+    width: 100%;
+}
+
+
+.Profile .ProfileImage {
+    border-radius: 3px 0px 0px 3px;
+    float: left;
+    height: 30px;
+    margin: -1px;
+    width: 30px;
+}
+
+.Profile .ProfileName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    height: 21px;
+    padding: 6px 9px 1px 10px;
+}
+
+/*** END Profile ***/
+
+/*****************************************/
+/******* END #header-right CONTENT *******/
+/*****************************************/
+
+
+/************** BEGIN - Categories Dropdown jQuery *******/
+.CategoriesWrapper {
+    margin-left: -7px;
+    bottom: 20px;
+    max-height: 200px;
+    margin-top: 11px;
+    display: none;
+    position: fixed;
+    z-index: 696;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.44);
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    position: absolute;
+    text-align: left;
+}
+
+.CategoriesWrapper.active {
+    min-height: 50px;
+    min-width: 50px;
+    display: block;
+}
+
+.defaultCaret {
+    height: 11px;
+    width: 20px;
+    top: -10px;
+    position: absolute;
+    color:#fff;
+    padding-left:10px;
+    text-shadow:0px -2px 2px rgba(0,0,0,0.22);
+    z-index:695;
+}
+
+.CategoriesMenu {
+    border-radius: 3px 3px 3px 3px;
+    overflow-y: auto;
+    text-align: left;
+    width: 450px;
+}
+.CategoriesMenu .CategoriesList {
+    overflow-x: hidden;
+    overflow-y: auto;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    height: auto;
+    margin-bottom: 34px;
+    position: absolute;
+}
+
+.CategoriesMenu ul {
+    list-style: none outside none;
+    margin: 0px;
+    padding: 10px;
+}
+
+.CategoriesMenu ul li {
+    display:inline-block;
+}
+
+.CategoriesMenu .item {
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2) inset;
+    border-radius: 3px 3px 3px 3px;
+    font-family: 'Helvetica',sans-serif;
+    color: rgb(143, 143, 143);
+    display: block;
+    font-size: 13px;
+    padding: 6px 0px 5px 9px;
+    position: relative;
+    width:200px;
+}
+
+.CategoriesMenu .item:hover {
+    color: #000000;
+    background: linear-gradient(#F1F1F1, #E8E8E8) ;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 -1px 0 rgba(0, 0, 0, 0.035) inset, 1px 0 0 rgba(0, 0, 0, 0.04) inset, -1px 0 0 rgba(0, 0, 0, 0.02) inset;
+}
+.CategoriesMenu .AboutLinks {
+    background-color: #F5F5F5;
+    border-radius: 0 0 3px 3px;
+    border-top: 1px solid #EBEBEB;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+}
+
+.CategoriesMenu .AboutLinks ul {
+    width:100%;
+}
+
+.CategoriesMenu .AboutLinks ul li {
+    padding-left:5px;
+}
+
+/************** END - Categories Dropdown jQuery *******/
+
+/************** BEGIN - Search Dropdown jQuery *******/
+
+.typeahead {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.44);
+    display: none;
+    left: 0;
+    margin: 0 1px;
+    position: relative;
+    right: 0;
+    top: 0;
+    z-index: 600;
+}
+
+.typeahead ul{
+    padding-top: 5px;
+    margin-top: 0px;
+    padding-left: 0px;
+    padding-bottom: 5px;
+}
+
+.typeahead ul li {
+    list-style: none outside none;
+    padding: 10px;
+    vertical-align:middle;
+}
+
+.typeahead ul li:hover {
+    background-color:#f3efec;
+    color:#000;
+}
+
+.typeahead ul li a:hover {
+    color:#000;
+}
+
+.typeahead img {
+    border-radius:3px;
+}
+
+.typeahead .name{
+    padding: 0px 0px 20px 5px;
+    vertical-align: middle;
+}
+
+/************** END - Search Dropdown jQuery *******/
+
+/************** BEGIN - AddContent model-Popup jQuery *******/
+
+.body-locked {
+    overflow: hidden;
+}
+
+.dp-none {
+    display: none !important;
+}
+
+.dp-block {
+    display: block !important;
+}
+
+.model-content {
+    display: none;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 10000;
+}
+
+ .model{   
+    position: relative;
+    width: 550px;
+    margin: 50px auto;
+    border-radius: 3px 3px 3px 3px;
+    background: none repeat scroll 0% 0% rgb(248, 248, 248);
+    box-shadow: 0px 0px 2px #888888;
+    margin-bottom: 14px;
+    margin-top:200px;
+}
+
+.standardForm {
+    margin: 0px auto 70px;
+    width: 550px;
+}
+
+.standardForm > h1{
+    border-bottom: 1px solid rgb(231, 231, 231);
+    color: rgb(51, 51, 51);
+    font-size: 20px;
+    margin: 0px;
+    min-height: 20px;
+    padding: 17px 18px 13px;
+    position: relative;
+}
+
+.standardForm > ul{
+    border-radius: 3px 3px 3px 3px;
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    margin: 0px;
+}
+
+
+.standardForm > ul > li:first-child {
+    border: 0px none;
+}
+.standardForm > ul > li{
+    overflow: hidden;
+    border-top: 1px solid rgb(223, 223, 223);
+    padding: 15px 21px 15px 27px;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul li {
+    list-style: none outside none;
+    padding: 0px;
+}
+
+.standardForm > ul > li > h3 {
+    color: rgb(85, 85, 85);
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 4px 10px 0px 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+}
+
+.standardForm > ul > li > div {
+    margin-left: 150px;
+    min-height: 28px;
+    padding-left: 1px;
+}
+
+.standardForm > ul > li > div >.content {
+    border-radius: 1px 1px 1px 1px;
+    -moz-box-sizing: border-box;
+    background: none repeat scroll 0% 0% rgb(240, 240, 240);
+    border: 1px solid rgb(209, 209, 209);
+    color: rgb(113, 113, 113);
+    display: block;
+    min-height: 1em;
+    outline: medium none;
+    padding: 8px;
+    width: 100%;
+    word-wrap: break-word;
+}
+.standardForm textarea {
+    height: 85px;
+    line-height: 20px;
+    resize: vertical;
+}
+
+.standardForm input[type="text"], .standardForm input[type="email"], .standardForm input[type="password"], .standardForm textarea {
+    background: linear-gradient(rgb(240, 240, 240), rgb(245, 245, 245)) repeat scroll 0% 0% transparent;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.12) inset;
+    width: 100%;
+    border: 1px solid rgb(214, 211, 206);
+    color: rgb(51, 51, 51);
+    font-size: 14px;
+    padding: 7px;
+}
+
+
+.formFooter {
+    border-radius: 0px 0px 3px 3px;
+    background: none repeat scroll 0% 0% rgb(240, 240, 240);
+    clear: both;
+    border-top: 1px solid rgb(218, 218, 218);
+    padding: 5px 15px 25px;
+    height: 15px;
+}
+
+.formFooter .formFooterButtons {
+    float: right;
+}
+
+/************** END - AddContent model-Popup jQuery *******/
+
+
+/*** BEGIN - Buttons ***/
+
+ .Button.btn {
+    background: linear-gradient(rgb(255, 255, 255), rgb(240, 240, 240)) repeat scroll 0% 0% rgb(240, 240, 240);
+    border: 1px solid rgb(204, 204, 204);
+    color: rgb(95, 95, 95);
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px 14px 7px;
+    white-space: nowrap;
+    border-radius:3px;
+}
+
+.Button.btn.primary{
+    background-image:linear-gradient(#e3262e,#ab171e);
+    box-shadow:0 1px 0 0 rgba(255,255,255,0.34);
+    background-color:#ab171e;
+    border:1px solid;
+    border-bottom-color:#820a0f;
+    border-left-color:#9a1015;
+    border-right-color:#9a1015;
+    border-top-color:#af151b;
+    color:#fff;
+    text-shadow:0 -1px rgba(0,0,0,0.11)
+}
+
+.Button.btn.primary:hover{
+    background-image:linear-gradient(#e63d44,#c11a22);
+    box-shadow:0 1px 3px 0 rgba(0,0,0,0.22);
+    border:1px solid #920c12
+}
+
+ /*** END - Buttons ***/
+
+/*** BEGIN - Select ***/
+
+select {
+    border-radius: 3px 3px 3px 3px;
+    width: 100%;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(207, 207, 207);
+    color: rgb(51, 51, 51);
+    cursor: pointer;
+    font-weight: bold;
+    height: 28px;
+    padding: 4px 4px 4px 14px;
+}
+
+/*** END - Select ***/
+
+ /************** BEGIN - Profile Dropdown Menu *******/
+
+.ProfileDropdown {
+    margin: 0px 1px;
+    position: relative;
+    top: 0px;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.44);
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    display: none;
+    left: 0px;
+    right: 0px;
+    z-index: 600;
+}
+
+
+.ProfileDropdown ul{
+    padding-top: 5px;
+    margin-top: 0px;
+    padding-left: 0px;
+    padding-bottom: 5px;
+}
+
+.ProfileDropdown ul li {
+    list-style: none outside none;
+    padding: 10px;
+    vertical-align:middle;
+}
+
+.ProfileDropdown ul li:hover {
+    background-color:#f3efec;
+    color:#000;
+}
+
+.ProfileDropdown ul li a:hover {
+    color:#000;
+}
+
+
+  /************** END - Profile Dropdown Menu *******/
+
+/************** BEGIN - Notifications Dropdown Menu *******/
+
+.notificationsDropdown {
+    margin-left: -7px;
+    bottom: 20px;
+    max-height: 200px;
+    margin-top: 11px;
+    display: none;
+    position: fixed;
+    z-index: 696;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.44);
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    position: absolute;
+    text-align: left;
+    bottom: 20px;
+    max-height: 433px;
+}
+
+.notificationsDropdown.active {
+    min-height: 50px;
+    min-width: 50px;
+    display: block;
+}
+
+.notificationsWrapper {
+    border-radius: 3px 3px 3px 3px;
+    overflow-y: auto;
+    text-align: left;
+    width: 320px;
+}
+.notificationsWrapper .categoriesWrapper {
+    overflow-x: hidden;
+    overflow-y: auto;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    height: auto;
+    margin-bottom: 34px;
+    position: absolute;
+}
+
+
+.Dropdown.notificationsDropdown {
+    background-color: rgb(245, 245, 245);
+    margin-left: 7px;
+}
+
+.Notifications {
+    border-radius: 3px 3px 0px 0px;
+    background-color: rgb(245, 245, 245);
+    width: 320px;
+}
+
+.notificationsWrapper .notifHeader {
+    border-radius: 3px 3px 0px 0px;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1), 0px 2px 3px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+}
+.notificationsWrapper .notifHeader, .Notifications .notifFooter {
+    background-color: rgb(255, 255, 255);
+    left: 0px;
+    position: absolute;
+    right: 0px;
+    z-index: 3;
+}
+
+.notificationsWrapper .notifTitle {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.notificationsWrapper .notifSettings {
+    color: rgb(119, 119, 119);
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    z-index: 3;
+}
+
+
+.notificationsWrapper .notifContent {
+    bottom: 20px;
+    height: auto;
+    left: 0px;
+    overflow: auto;
+    position: absolute;
+    right: 0px;
+    top: 36px;
+    z-index: 2;
+    background-color: rgb(245, 245, 245);
+}
+
+
+.NotificationItems .notifItem {
+    overflow: hidden;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    color: rgb(102, 102, 102);
+    cursor: pointer;
+}
+
+.NotificationItems .notifItem:hover {
+    background-color:#eeeeee;
+}
+
+
+.NotificationItems .actorImages {
+    left: 0px;
+}
+.NotificationItems .actorImages, .NotificationItems .objectImage {
+    position: absolute;
+}
+.NotificationItems .notifItem {
+    color: rgb(102, 102, 102);
+    cursor: pointer;
+}
+
+
+.NotificationItems .actorImage {
+    display: none;
+}
+.NotificationItems .actorImage, .NotificationItems .objectImage {
+    margin: 10px;
+    width: 33px;
+}
+
+
+.NotificationItems .actorImage span, .NotificationItems .objectImage span {
+    position: relative;
+    display: block;
+}
+
+
+.NotificationItems .notifMessage {
+    float: left;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 10px 52px;
+    line-height: 15px;
+    width: 194px;
+}
+
+
+.NotificationItems .notifMessage a {
+    color: rgb(102, 102, 102);
+}
+.NotificationItems .notifMessage .timesince {
+    color: rgb(162, 162, 162);
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.notificationsWrapper .notifFooter {
+    border-radius: 0px 0px 3px 3px;
+    box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1), 0px -2px 3px rgba(0, 0, 0, 0.05);
+    bottom: 0px;
+    height: 20px;
+}
+.notificationsWrapper .notifHeader, .Notifications .notifFooter {
+    background-color: rgb(255, 255, 255);
+    left: 0px;
+    position: absolute;
+    right: 0px;
+    z-index: 3;
+}
+
+
+.NotificationItems .actorImage.active {
+    display: block;
+}
+
+.NotificationItems .actorImage span img, .NotificationItems .objectImage span img {
+    border-radius: 3px 3px 3px 3px;
+    height: 33px;
+    width: 33px;
+}
+
+/************** END - Notifications Dropdown Menu *******/
+/******************************************/
+/********** BEGIN #main CONTENT ***********/
+/******************************************/
+
+#main {
+    padding-top: 45px;
+}
+
+#main-inner {
+    max-width: 1250px;
+    min-width: 750px;
+    margin: 0px auto;
+}
+
+
+/******* Masonry Style *******/
+#container .grid-sizer { width: 10px; }
+#container .item {width: 236px; margin: 14px 7px 0px; background-color:#fff;border-radius: 3px 3px 3px 3px;box-shadow: 0px 0px 2px #888888;}
+#container .item img{width: 236px; border-radius: 3px 3px 0px 0px;}
+#container .item img:hover {background:none repeat scroll rgba(255,255,255,0.1)}
+#container .item.w2 { width: 40%; }
+
+/*placed .open-model at 400px so we can see page remains in same position on when models opened*/
+.open-model{
+    position: relative;
+    top: 400px;
+}
+
+.pinMeta {
+    padding: 6px 14px 7px;
+}
+
+.pinDescription {
+    margin: 5px 0px;
+    font-size: 13px;
+    line-height: 17px;
+    word-wrap: break-word;
+}
+
+.pinDescription a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+a {
+    color: rgb(113, 113, 113);
+    font-weight: bold;
+    text-decoration: none;
+}
+.pinSocialMeta .socialItem {
+    display: inline-block;
+    vertical-align: middle;
+    color: rgb(167, 167, 167);
+    padding-right: 7px;
+}
+
+.pinUserAttribution {
+    font-family: 'Helvetica',sans-serif;
+    font-weight: bold;
+    color: rgb(119, 119, 119);
+    border-top: 1px solid rgb(231, 231, 231);
+}
+
+.firstAttribution {
+    padding-top: 10px;
+}
+.attributionItem {
+    border-radius: 0px 0px 3px 3px;
+    overflow: hidden;
+    display: block;
+    line-height: 14px;
+    padding: 5px 14px;
+}
+.attributionItem:hover{
+    background:#f1f1f1;
+}
+.attributionItem img {
+    border-radius: 2px 2px 2px 2px !important;
+    float: left;
+    height: 30px;
+    margin-right: 5px;
+    width: 30px !important;
+}
+
+.attributionTitle {
+    color: rgb(183, 183, 183);
+}
+.attributionName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgb(113, 113, 113);
+    display: block;
+}
+.lastAttribution {
+    padding-bottom: 10px;
+}
+
+.pinDescription {
+    border-top: medium none;
+    /*border-top: 1px solid rgb(227, 227, 227);*/
+    font-size: 17px;
+    line-height: 23px;
+    color: rgb(51, 51, 51);
+    word-wrap: break-word;
+}
+
+.pinDescriptionComment {
+    margin-bottom: 0px;
+    padding: 23px 20px;
+    overflow: hidden;
+}
+
+.userThumbContainer {
+    position: relative;
+    margin-right: 16px;
+    width: 50px;
+    float: left;
+}
+
+.userThumbContainer img {
+    border-radius: 3px 3px 3px 3px !important;
+    height: 50px !important;
+    width: 50px !important;
+    padding: 0px 0px !important;
+}
+
+.commenterNameCommentText {
+    margin-left: 66px;
+}
+
+
+.commentDescriptionCreator {
+    color: rgb(69, 69, 69);
+    font-size: 16px;
+    line-height: 26px;
+}
+
+
+.commentDescriptionTimeAgo {
+    color: rgb(153, 153, 153);
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.commentDescriptionContent {
+    color: rgb(23, 23, 23);
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    max-width: 600px;
+}
+
+
+/******************************************/
+/************ END #main CONTENT ***********/
+/******************************************/
+
+/************** BEGIN - MainContent Popup *******/
+
+
+.model-container {
+    display: none;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0; right: 0;
+    height: 100%; width: 100%;
+    background-color: rgba(227, 224, 226, 0.95);
+    z-index: 10000;
+}
+
+.model-content {
+    display: none;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0; right: 0;
+    height: 100%; width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 10000;
+}
+
+.modelpopup {
+    width: 736px;
+    margin: 50px auto;
+    position: relative;
+}
+
+.modelpopup .model-box{
+    /*height: 800px;*/
+    width: 736px;
+    /*margin: 50px auto;*/
+    background: indianred;
+    border-radius: 3px 3px 3px 3px;
+    position: relative;
+    background: none repeat scroll 0% 0% rgb(248, 248, 248);
+    box-shadow: 0px 0px 2px #888888;
+    margin-bottom: 14px;
+}
+
+.modelpopup .model-box-popup{
+    width: 651px;
+    background: indianred;
+    border-radius: 3px 3px 3px 3px;
+    position: relative;
+    background: none repeat scroll 0% 0% rgb(248, 248, 248);
+    box-shadow: 0px 0px 2px #888888;
+    margin-bottom: 14px;
+    margin-top:200px;
+}
+
+.modelpopup img {
+    position:relative;
+    padding: 40px 0px;
+    margin: 0px auto;
+    display:block;
+    max-width: 100%;
+}
+
+.pinDescription {
+    border-top: medium none;
+    /*border-top: 1px solid rgb(227, 227, 227);*/
+    font-size: 17px;
+    line-height: 23px;
+    color: rgb(51, 51, 51);
+    word-wrap: break-word;
+}
+
+.pinDescriptionComment {
+    margin-bottom: 0px;
+    padding: 23px 20px;
+    overflow: hidden;
+    border-top: 1px solid rgb(231, 231, 231);
+}
+
+.userThumbContainer {
+    position: relative;
+    margin-right: 16px;
+    width: 50px;
+    float: left;
+}
+
+.userThumbContainer img {
+    border-radius: 3px 3px 3px 3px !important;
+    height: 50px !important;
+    width: 50px !important;
+    padding: 0px 0px !important;
+}
+
+.commenterNameCommentText {
+    margin-left: 66px;
+}
+
+
+.commentDescriptionCreator a {
+    color: rgb(69, 69, 69);
+    font-size: 16px;
+    line-height: 26px;
+}
+
+
+.commentDescriptionTimeAgo {
+    color: rgb(153, 153, 153);
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.commentDescriptionContent {
+    color: rgb(23, 23, 23);
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    max-width: 600px;
+}
+
+
+.Button.close.visible {
+    transform: translateY(0px);
+}
+.Closeup .visible {
+    display: block;
+}
+.close {
+    padding-left: 2px;
+    position: fixed;
+    top: 0px;
+    z-index: 652;
+}
+.Button.close {
+    background: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235)) repeat scroll 0% 0% transparent;
+    border-radius: 0px 0px 3px 3px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.34), 1px 0px 0px rgba(255, 255, 255, 0.9) inset;
+    cursor: pointer;
+    display: block;
+    height: 44px;
+    right: 14px;
+    width: 44px;
+    transition-delay: 0.3s;
+    transition-duration: 0.35s;
+    transition-property: -webkit-transform, -moz-transform, -o-transform, transform;
+    transform: translateY(-60px);
+}
+.Button.borderless {
+    background-color: transparent;
+    border: 0px none;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.Button.close em {
+    height: 16px;
+    width: 16px;
+    background: url("/Images/main-s601428623f.2a24396c.png") no-repeat scroll -1083px 0px transparent;
+}
+.Button em {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+.PinCommentList {
+    background-color:#fff;
+}
+
+/************** END - MainContent Popup *******/
+
+
+/**** BEGIN - Settings Page Styling ****/
+
+.definitions {
+    margin: 0px auto 70px;
+    width: 734px;
+}
+
+.definitions h1 {
+    color: rgba(21, 21, 21, 0.8);
+    text-shadow: 1px 2px 4px rgb(227, 227, 227), 0px 0px 0px rgb(0, 0, 0), 1px 2px 4px rgb(227, 227, 227), 0px 1px 0px rgb(255, 255, 255);
+    font-size: 47px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 736px;
+    text-align: center;
+    line-height: 54px;
+    margin-bottom: 52px;
+}
+
+
+.definitions > ul {
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.33);
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    margin-bottom: 14px;
+}
+
+.definitions > ul > li {
+    overflow: hidden;
+    border-top: 1px solid rgb(223, 223, 223);
+    padding: 15px 21px 15px 27px;
+}
+
+.definitions > ul > li > h3 {
+    color: rgb(85, 85, 85);
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 4px 10px 0px 0px;
+    width: 216px;
+}
+
+.definitions > ul > li > div {
+    margin-left: 226px;
+    min-height: 28px;
+    padding-left: 1px;
+}
+
+label {
+    cursor: pointer;
+}
+
+
+.formInlineCheckedSet {
+    padding-top: 6px;
+}
+
+.formTextField, 
+.definitions input[type="text"], 
+.definitions input[type="email"], 
+.definitions input[type="password"], 
+.definitions textarea, 
+.loginForm input[type="text"], 
+.loginForm input[type="email"], 
+.loginForm input[type="password"], 
+.loginForm textarea {
+    background: linear-gradient(rgb(240, 240, 240), rgb(245, 245, 245)) repeat scroll 0% 0% transparent;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.12) inset;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    border: 1px solid rgb(214, 211, 206);
+    color: rgb(51, 51, 51);
+    font-size: 14px;
+    padding: 7px;
+}
+
+.formSelectField, 
+.definitions select, 
+.loginForm select {
+    border-radius: 3px 3px 3px 3px;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(207, 207, 207);
+    color: rgb(51, 51, 51);
+    cursor: pointer;
+    font-weight: bold;
+    height: 28px;
+    padding: 4px 4px 4px 14px;
+}
+
+.formInlineCheckedSet {
+    padding-top: 6px;
+}
+fieldset {
+    border: 0px none;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.formInlineCheckedSet li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 25px;
+}
+
+.formInlineCheckedSet label {
+    color: rgb(85, 85, 85);
+    cursor: pointer;
+}
+
+
+.formInlineCheckedSet label > input {
+    margin-right: 3px;
+}
+
+.formInlineCheckedSet label > span {
+    font-size: 13px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+.formInlineCheckedSet label {
+    color: rgb(85, 85, 85);
+    cursor: pointer;
+}
+
+.formCheckedSet li {
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.formCheckedSet label > span {
+    font-size: 13px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.formCheckedSet label {
+    color: rgb(85, 85, 85);
+    cursor: pointer;
+}
+
+.formCheckedSet label .fancyToggle {
+    margin-right: 8px;
+}
+
+.formCheckedSet span {
+    line-height: 28px;
+}
+
+.formFooter {
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.33);
+    border-radius: 0px 0px 3px 3px;
+    background: none repeat scroll 0% 0% rgb(240, 240, 240);
+    clear: both;
+    border-top: 1px solid rgb(218, 218, 218);
+    padding: 10px 20px;
+    height:35px;
+}
+
+.formFooter .formFooterDelete {
+    float: left;
+    margin-right: 10px;
+}
+
+.formFooter .formFooterButtons {
+    float: right;
+}
+
+.formFooter .btn.Button {
+    margin-left: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/**** END - Settings Page Styling ****/

@@ -1,0 +1,60 @@
+﻿@model MyWebsiteEntity.Models.MainViewModel
+
+@{
+    ViewBag.Title = "Main";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<div id="container" class="js-masonry" data-masonry-options='{ "columnWidth": ".grid-sizer", "itemSelector": ".item"}'>
+    <div class="grid-sizer"></div>
+    <!-- BEGIN item open-model --> 
+    <!--div class="item open-model">
+        <a href="#">
+            <img src="/images/rain.jpg" />
+        </a>
+        <div class="pinMeta">
+            <p class="pinDescription">  
+                playa del carmen Looking for 3-5 people to work with and mentor to earn a FREE Trip to Play De carmen in Mexico. 2 spots left to join!
+            </p>
+            <div class="pinSocialMeta">
+                <a class="socialItem likes" href="#">
+                    1 like
+                </a>
+            </div>
+        </div>
+        <div class="pinUserAttribution">
+            <a class="attributionItem firstAttribution " href="#">
+                <img class="attributionImg" style="" src="/images/profile-30.jpg" />
+                <span class="attributionTitle">
+                    Posted by
+                </span>
+                <span class="attributionName">
+                    July Mark
+                </span>
+            </a>
+            <a class="attributionItem lastAttribution " href="#">
+                <img class="attributionImg" style="" src="/images/profile-30.jpg" />
+                <span class="attributionTitle">
+                    in
+                </span>
+                <span class="attributionName">Category</span>
+            </a>
+        </div>
+    </div-->
+    @Html.HiddenFor(model => model.Entities)
+
+    @if (Model.Entities != null)
+    {
+        foreach (var item in Model.Photo)
+        {  
+            <div class="item open-model">
+                <a href="@Url.Action("CommentZoom", "Account", new { id = item.EntityId, url = item.PhotoURL })" class="forPartial" id="@item.EntityId">
+                    <img src="@Url.Content(item.PhotoURL)" />
+                </a>
+            </div>
+        }
+    }
+
+    </div>
+    <div id="partialRender"></div>
+

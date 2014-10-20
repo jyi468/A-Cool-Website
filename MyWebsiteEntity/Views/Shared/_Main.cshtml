@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+@model MyWebsiteEntity.Models.MainViewModel
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - MyWebsiteEntity</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/Scripts/jquery")
+    @Styles.Render("~/Scripts/PandS")
+</head>
+<body>
+    <div>
+        <header>
+            <div id="header-inner">
+                <div id="header-left">
+                    <div class="Button categories">
+                        <button type="button">
+                            <em class="fa fa-align-justify"></em>
+                        </button>
+                    </div>
+                    <div class="SearchForm">
+                        <input class="field" type="text" placeholder="Search" autocomplete="off" value="" name="q"></input>
+                        <div class="typeahead" style="display: none;">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <span class="img">
+                                            <img src="http://passets-ak.pinterest.com/images/user/default_30.png"></img>
+                                        </span>
+                                        <span class="name">
+                                            Ana Isabel Drumond
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="img">
+                                            <img src="http://media-cache-ec0.pinimg.com/avatars/anasfcamara_1365176842_30.jpg"></img>
+                                        </span>
+                                        <span class="name">
+                                            Ana Câmara
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="submit" type="submit">
+                            <em class="fa fa-search"></em>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <a href="/" class="logo"></a>
+                </div>
+                <div id="header-right">
+                    <div class="Button addcontent">
+                        <button type="button">
+                            <em class="fa fa-plus"></em>
+                        </button>
+                    </div>
+                    <!-- Notifications -->
+                    <div class="Button notifications" style="margin-left: 7px; float:right">
+                        <button type="button">
+                            <em class="fa fa-bell"></em>
+                        </button>
+                    </div>
+                    <!-- Profile -->
+                    <div class="ProfileWrapper">
+                        <div class="Profile">
+                            <a href="#">
+                                <div class="ProfileLink">
+                                    <span class="ProfileImage" style="background-image:url(/images/profile-30.jpg)"></span>
+                                    <span class="ProfileName">
+                                        @User.Identity.Name
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="ProfileDropdown" style="display: none;">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        Your Posts
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Your Likes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Settings
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="logout">
+                                        <a href="#">
+                                            Logout
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- *** End Header *** -->
+        <!-- Begin Main -->
+        <div id="main">
+            <div id="main-inner">
+                @RenderBody()
+            </div>
+        </div>
+        <!-- END Main -->
+        <!-- *** Begin - Category JQuery Dropdown *** -->
+        <div class="CategoriesWrapper" style="left: 93.5px; top: 37px;">
+            <span class="defaultCaret fa fa-caret-up fa-2x" style="left: 11.5px;"></span>
+            <div class="CategoriesMenu" style="display: block;">
+                <div class="CategoriesList">
+                    <ul>
+                        <li>
+                            <a class="item">All Categories</a>
+                        </li>
+                        <li>
+                            <a class="item">Category 1</a>
+                        </li>
+                        <li>
+                            <a class="item">Category 2</a>
+                        </li>
+                        <li>
+                            <a class="item">Category 3</a>
+                        </li>
+                        <li>
+                            <a class="item">Category 4</a>
+                        </li>
+                        <li>
+                            <a class="item">Category 5</a>
+                        </li>
+                        <li>
+                            <a class="item">Category 6</a>
+                        </li>
+                        <li>
+                            <a class="item">Category 7</a>
+                        </li>
+                        <li>
+                            <a class="item">Category 8</a>
+                        </li>
+                        <li>
+                            <a class="item">Category 9</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="AboutLinks">
+                    <ul>
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- *** End - Category JQuery Dropdown *** -->
+        <!-- *** BEGIN - logout *** -->
+        @using (Html.BeginForm("LogOff", "Account"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+            <div class="logout-content dp-none">
+                <div class="logoutmodel">
+                    <div class="logoutForm">
+                        <h1>
+                            Logout?
+                        </h1>
+                        <div class="formFooter">
+                            <div class="logoutFooterButtons">
+                                <input value="Cancel" class="Button btn close-modelpopup" type="button" />
+
+                                <input value="Logout" name="Logout" class="Button primary btn" type="submit" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- *** END   - logout *** -->
+        }
+        <!-- *** BEGIN - model AddContent *** -->
+        @using (Html.BeginForm("Post", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <div class="model-content dp-none">
+                <div class="model">
+                    <div class="standardForm">
+                        <h1>
+                            Add new content
+                        </h1>
+                        <ul>
+                            <li>
+                                <h3>
+                                    <label>
+                                        Category
+                                    </label>
+                                </h3>
+                                <div>
+                                    <select name="Category">
+                                        <option value="1">Animals</option>
+                                        <option value="2">Cars & Motorcycles</option>
+                                        <option value="3">Fashion</option>
+                                        <option value="4">Film, Music & Books</option>
+                                        <option value="5">Food & Drink</option>
+                                        <option value="6">Hair & Beauty</option>
+                                        <option value="7">Humor</option>
+                                        <option value="8">Photography</option>
+                                        <option value="9">Sports</option>
+                                        <option value="10">Technology</option>
+                                        <option value="11">Travel</option>
+                                        <option value="12">Other</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li>
+                                <h3>
+                                    <label>
+                                        Description
+                                    </label>
+                                </h3>
+                                <div>
+                                    <textarea name="Description" class="content" placeholder="Add a short description to your post..."></textarea>
+                                </div>
+                            </li>
+                            <li>
+                                <h3>
+                                    <label>
+                                        Image
+                                    </label>
+                                </h3>
+                                <div>
+                                    <input id="upload" type="file" name="File" accept="image/*" />
+                                    <!--button type="submit">Upload</!--button-->
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="formFooter">
+                            <div class="formFooterButtons">
+                                <button class="Button btn close-modelpopup" type="button">
+                                    <span class="buttonText">
+                                        Cancel
+                                    </span>
+                                </button>
+                                <button class="Button primary btn" type="submit">
+                                    <span class="buttonText">
+                                        Submit
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- *** END - model AddContent *** -->
+        }
+        <!-- Notifications Dropdown -->
+        <div class="notificationsDropdown" style="left: 1009.5px; top: 37px;">
+            <span class="defaultCaret fa fa-caret-up fa-2x" style="left: 291.5px;"></span>
+            <div class="notificationsWrapper" style="display: block;">
+                <div class="notifHeader">
+                    <h1 class="notifTitle">
+                        Notifications
+                    </h1><a class="notifSettings">
+                        Edit
+                    </a>
+                </div>
+                <div class="notifContent">
+                    <div class="NotificationItems">
+                        <div class="notifItem">
+                            <div class="actorImages">
+                                <a class="actorImage active" href="#">
+                                    <span>
+                                        <img src="/images/profile-30.jpg" />
+                                    </span>
+                                </a>
+                            </div>
+                            <p class="notifMessage">
+                                <a href="#">
+                                    July Mark
+                                </a>
+                                liked your post.
+
+                                <span class="timesince">
+                                    4 hours ago
+                                </span>
+                            </p>
+                        </div>
+                        <div class="notifItem">
+                            <div class="actorImages">
+                                <a class="actorImage active" href="#">
+                                    <span>
+                                        <img src="/images/profile-30.jpg" />
+                                    </span>
+                                </a>
+                            </div>
+                            <p class="notifMessage">
+                                <a href="#">
+                                    July Mark
+                                </a>
+                                liked your post.
+
+                                <span class="timesince">
+                                    4 hours ago
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="notifFooter"></div>
+            </div>
+        </div>
+        <!--** End - Notifications Dropdown **-->
+    </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+﻿@model MyWebsiteEntity.Models.SettingsModel
+
+@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+@using (Html.BeginForm("Settings", "Account", FormMethod.Post, new { enctype ="multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+<div class="definitions">
+    <h1>Account Settings</h1>
+    <ul>
+        <li class="sectionTitle">
+            <h2>
+                Edit Profile
+            </h2>
+        </li>
+        <li>
+            <h3>
+                <label>
+                    Name
+                </label>
+            </h3>
+            <div>
+                @Html.TextBoxFor(m => m.FirstName)
+            </div>
+        </li>
+        <li>
+            <h3>
+                <label>
+                    Last Name
+                </label>
+            </h3>
+            <div>
+                @Html.TextBoxFor(m => m.LastName)
+            </div>
+        </li>
+        <li>
+            <h3>
+                Username
+            </h3>
+            <div>
+                http://Cappy.com/
+                @*@Html.TextBoxFor(m => m.UserName)*@
+            </div>
+        </li>
+        <li>
+            <h3>
+                Photo
+            </h3>
+            <div>
+
+                <input id="upload" type="file" name="pic" accept="image/*" />
+            </div>
+        </li>
+        <li>
+            <h3>
+                Gender
+            </h3>
+            <div class="fieldsetWrapper">
+                <fieldset class="formInlineCheckedSet">
+                    <ul>
+                        <li>
+                            <label>
+                                <input type="radio" value="male" checked="checked" name="gender" />
+                                <span class="gender">
+                                    Male
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" value="female" name="gender" />
+                                <span class="gender">
+                                    Female
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" value="unspecified" name="gender" />
+                                <span class="gender">
+                                    Unspecified
+                                </span>
+                            </label>
+                        </li>
+                    </ul>
+                </fieldset>
+            </div>
+        </li>
+        <li>
+            <h3>
+                <label>
+                    Email Address
+                </label>
+            </h3>
+            <div>
+                @Html.TextBoxFor(m => m.EmailAddress)
+            </div>
+        </li>
+        <li>
+            <h3>
+                Password
+            </h3>
+            <div>
+                <input type="button" class="LoginButton btn big " value="Change Password" onclick="location.href='@Url.Action("Manage", "Account")'" />
+            </div>
+        </li>
+        <li>
+            <h3>
+                <label>
+                    Country
+                </label>
+            </h3>
+            <div>
+                <select>
+                    <option value="de">Deutsch</option>
+                    <option value="en-GB"> English (UK)</option>
+                    <option value="en-US">Português (Europe)</option>
+                    <option value="es-419">Español (América)</option>
+                    <option value="es-ES">Español (España)</option>
+                    <option value="fr">Français</option>
+                    <option value="nl">Nederlands </option>
+                    <option value="pt-BR"> Português (Brasil)</option>
+                    <option selected="selected" value="pt-PT">English (US) </option>
+                </select>
+            </div>
+        </li>
+    </ul>
+    <ul class="emailSettings">
+        <li class="sectionTitle">
+            <h2>
+                Email Notifications
+            </h2>
+        </li>
+        <li class="emailGlobalToggle">
+            <h3>
+                Get email notifications
+            </h3>
+            <div class="fieldsetWrapper">
+                <input type="checkbox" />
+            </div>
+        </li>
+        <li>
+            <h3>
+                Get an email when someone
+            </h3>
+            <div class="fieldsetWrapper">
+                <fieldset class="formCheckedSet">
+                    <ul>
+                        <li>
+                            <input type="checkbox" /><label>Likes your post</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" /><label>Comments on your post</label>
+                        </li>
+                    </ul>
+                </fieldset>
+            </div>
+        </li>
+    </ul>
+    <div class="formFooter">
+        <div class="formFooterDelete">
+            <button class="rounded deleteAccountButton Button Module hasText btn" type="button">
+                <span class="buttonText">
+                    Deactivate your account
+                </span>
+            </button>
+        </div>
+        <div class="formFooterButtons">
+            <button class="rounded NavigateButton Button Module hasText cancel btn" type="button">
+                <span class="buttonText">
+                    Cancel
+                </span>
+            </button>
+            <button class="rounded Button primary Module hasText btn saveSettingsButton" runat="server" id="SaveSettings" type="submit">
+                <span class="buttonText">
+                    Save Settings
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Start";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<div class="loginbuttons">
+    <input type="button" class="LoginButton btn primary big" value="Login" onclick="location.href='@Url.Action("Login","Account")'" />
+    <input type="button" class="LoginButton btn big" value="Login" onclick="location.href='@Url.Action("Login","Register")'" />
+</div>
+<div class="promoImage">
+    <img src="images/Laptop_Scratch.png" />
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

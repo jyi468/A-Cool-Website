@@ -1,0 +1,71 @@
+﻿@model MyWebsiteEntity.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+
+@*<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>*@
+
+<section id="loginForm">
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    
+
+    <fieldset>    
+        @Html.ValidationSummary(true, "", new { style = "text-align: center; position: relative; top: 25px " }) 
+        <div class="loginbuttons model model-login">
+           
+            <div class="standardForm">
+                <h1 class="redcentered">
+                    Login
+                </h1>
+                <ul>
+                    <li>
+                        <h3>
+                            @Html.LabelFor(m => m.UserName)
+                        </h3>
+                        <div>
+                            @Html.TextBoxFor(m => m.UserName, new {style = "width: 93%"})
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </div>
+                    </li>
+                    <li>
+                        <h3>
+                            @Html.LabelFor(m => m.Password)
+                        </h3>
+                        <div>
+                            
+                            @Html.PasswordFor(m => m.Password, new { style = "width: 93%" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                    </li>
+
+                </ul>
+                <div class="formFooter">
+                    <div class="formFooterButtons">
+                        <input type="button" class="LoginButton btn big " value="Go Back Home" onclick="location.href='@Url.Action("Index","Home")'" />
+                        <input type="submit" value="Login" class="Button primary btn big"/>
+                    </div>
+                </div>
+                <p style="vertical-align: bottom; float:left; margin-left:28px">@Html.ActionLink("Register", "Register") if you don't have an account.</p>
+
+            </div>
+         </div>
+
+    </fieldset>
+
+}
+</section>
+
+<section class="social" id="socialLoginForm">
+    <h2>Use another service to log in.</h2>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
