@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ServiceConfiguration serviceName="MyWebsiteEntity.Azure1" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-06.2.4">
-  <Role name="MyWebsiteEntity">
-    <Instances count="1" />
-    <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=mycloudjyi468;AccountKey=tmfsmx1t4rC6MjHlbr/0yn6LaqqWj+/1vo6fVJHPfj3wccZ3mO5A+2Y/xa0oizFm1qPwOidrH0hNL0MbZHKTfA==" />
-    </ConfigurationSettings>
-  </Role>
-</ServiceConfiguration>
