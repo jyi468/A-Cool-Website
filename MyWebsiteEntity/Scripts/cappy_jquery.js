@@ -6,7 +6,7 @@
     /*   Main-Content     */
     model_container = $('.model-container');
 
-    $('.commentDescriptionContent').on("click", ".primary", function () {
+    $('#main-inner').on("click", ".primary", function () {
         theComment = $('.commentContent').val();
         theId = $('.primary').attr('id');
         theUrl = $('.primary').attr('name');
