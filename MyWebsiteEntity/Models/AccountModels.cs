@@ -43,25 +43,20 @@ namespace MyWebsiteEntity.Models
 
     public class MainViewModel
     {
-        public UserProfile userProfile { get; set; }
+        public IList<UserProfile> UserProfiles { get; set; }
         public IList<Entity> Entities { get; set; }
-        public IList<EntityComment> EntityComment { get; set; }
-        public IList<EntityDescription> EntityDescription { get; set; }
-        public IList<EntityTag> EntityTag { get; set; }
-        public IList<LikedEntity> LikedEntities { get; set; }
+        public IList<string> TagNames { get; set; }
+        public IList<string> UserNames { get; set; }
         public IList<Photo> Photo { get; set; }
-        public IQueryable<int> EntityIds { get; set; }
+        public IList<int> EntityIds { get; set; }
 
-        public MainViewModel(UserProfile _userProfile, IList<Entity> _entities,
-            IList<EntityComment> _comments, IList<EntityDescription> _descriptions, IList<EntityTag> _tag,
-            IList<LikedEntity> _likedEntity, IList<Photo> _photo, IQueryable<int> _entityids)
+        public MainViewModel(IList<UserProfile> _userProfiles, IList<Entity> _entities, IList<string> _tagNames,
+            IList<string> _userNames, IList<Photo> _photo, IList<int> _entityids)
         {
-            userProfile = _userProfile;
+            UserProfiles = _userProfiles;
             Entities = _entities;
-            EntityComment = _comments;
-            EntityDescription = _descriptions;
-            EntityTag = _tag;
-            LikedEntities = LikedEntities;
+            TagNames = _tagNames;
+            UserNames = _userNames;
             Photo = _photo;
             EntityIds = _entityids;
         }
@@ -92,11 +87,6 @@ namespace MyWebsiteEntity.Models
         public string Category { get; set; } // Tag
         public string Description { get; set; } //Description
         public HttpPostedFileBase File { get; set; } //PhotoURL (derived from file)
-    }
-
-    public class MainModel
-    {
-
     }
 
     public class SettingsModel

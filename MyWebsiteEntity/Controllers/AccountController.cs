@@ -24,13 +24,8 @@ namespace MyWebsiteEntity.Controllers
     public class AccountController : Controller
     {
 
-        /*public ActionResult Comment(CommentModel comment)
-        {
-            return View();
-        }*/
-
         Repository _repository = new Repository();
-
+        /*
         public ActionResult MainViewModel()
         {
             UsersContext db = new UsersContext();
@@ -39,15 +34,14 @@ namespace MyWebsiteEntity.Controllers
             var ecomment = db.EntityComment.ToList();
             var edescription = db.EntityDescription.ToList();
             var etag = db.EntityTag.ToList();
-            var lentities = db.LikedEntities.ToList();
             var photos = db.Photo.ToList();
 
             IQueryable<int> eids = db.EntityIds;
             MainViewModel main = new MainViewModel(userProfile, entities,
-                ecomment, edescription, etag, lentities, photos, eids);
+                ecomment, edescription, etag, photos, eids);
 
             return View(main);
-        }
+        }*/
 
         //POST: comments
         [HttpPost]
@@ -115,7 +109,6 @@ namespace MyWebsiteEntity.Controllers
                 // Create model containing description, current comments, UserId (OP)
                 // and commenters UserId's
 
-                
                 model.UserNames = users;
                 model.Comments = comments;
                 model.opUserId = opUserId;
@@ -139,9 +132,7 @@ namespace MyWebsiteEntity.Controllers
         [HttpPost]
         public ActionResult Post(PostModel model) //upload content
         {
-            /*******************************************************/
             /*********** START - CREATE DB OBJECTS     *************/
-            /*******************************************************/
             UsersContext db = new UsersContext();
             UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.Equals(User.Identity.Name));
 
@@ -149,10 +140,7 @@ namespace MyWebsiteEntity.Controllers
             Entity entity = new Entity(); // primary key auto generated
             //entity.EntityId = 1;
 
-
-            /*******************************************************/
             /*********** START - SETUP KEYS/DB OBJECTS *************/
-            /*******************************************************/
             int eid = entity.EntityId;
             int uid = user.UserId;
 
@@ -175,17 +163,10 @@ namespace MyWebsiteEntity.Controllers
             etag.EntityId = eid;
             etag.UserId = uid;
 
-            /*******************************************************/
             /*********** END - SETUP KEYS/DB OBJECTS ***************/
-            /*******************************************************/
 
-            /**********************************************/
             /*********** START- ADD CONTENT ***************/
-            /**********************************************/
-
             // We need to add a PhotoURL, Category and Description
-
-
             if(ModelState.IsValid)
             {
                 if (model.File != null)
@@ -204,7 +185,6 @@ namespace MyWebsiteEntity.Controllers
                     edescription.Description = model.Description;
 
                     //Save objects to tables
-
                     db.LikedEntities.Add(Lentity);
                     db.Photo.Add(photo);
                     db.EntityDescription.Add(edescription);
@@ -224,12 +204,10 @@ namespace MyWebsiteEntity.Controllers
                             saveFailed = true;
 
                             // Update original values from the database 
-                            //var entries = ex.Entries;
                             foreach (var entry in ex.Entries)
                             {
                                 entry.Reload();
                             }
-                            //ex.Entries.Single().Reload();
                         }
 
                     } while (saveFailed);
@@ -238,7 +216,8 @@ namespace MyWebsiteEntity.Controllers
                     model.File.SaveAs(localpath);
 
                 }
-                return RedirectToAction("Main", "Account"); 
+                return RedirectToAction("Main", "Account");
+                /*********** END - ADD CONTENT ****************/
             }
             else
             {
@@ -246,9 +225,7 @@ namespace MyWebsiteEntity.Controllers
             }
             return View(model);
         }
-        /**********************************************/
-        /*********** END - ADD CONTENT ****************/
-        /**********************************************/
+
 
         // GET: /Account/Settings
         public ActionResult Settings()
@@ -274,35 +251,16 @@ namespace MyWebsiteEntity.Controllers
                     file.SaveAs(path);
 
                 }
-
-                // Change other account fields
-                //user.UserName = model.UserName;
-                /*user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-                user.EmailAddress = model.EmailAddress;*/
-
-                db.Entry(user).State = EntityState.Modified;
+                /*db.Entry(user).State = EntityState.Modified;
                 var dbC = ((IObjectContextAdapter)db).ObjectContext;
 
                 var refreshableObjects = db.ChangeTracker.Entries().Select(c => c.Entity).ToList();
                 dbC.Refresh(RefreshMode.StoreWins, refreshableObjects);
-                db.SaveChanges();
+                db.SaveChanges();*/
                 RedirectToAction("Settings", "Account");
             }
             return View(model);
         }
-
-        /*public List<UserProfile> FindRandomUsers()
-        {
-            //var query = ;
-            int maxPhotos = 10;
-            for(int i = 0; i < maxPhotos; i++)
-            {
-
-            }
-            return ;
-            
-        }*/
 
         // GET: /Account/Main
         public ActionResult Main() // Return model with entities, photos
@@ -311,33 +269,43 @@ namespace MyWebsiteEntity.Controllers
             UsersContext db = new UsersContext();
             //var userProfiles = new List<UserProfile>();
             UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.Equals(User.Identity.Name));
-           
-            var likedEnts = //list of liked entities
+
+            //list of ALL liked entities RANDOMIZED
+            var likedEnts = 
                 from lents in db.LikedEntities
-                where lents.UserId == user.UserId
                 select lents;
 
+            int entityLimit = 20; // Entity limit is the max number of entities per page
+
+
+            //Limit entities
+            if (likedEnts.Count() > entityLimit) 
+            {
+                likedEnts = likedEnts.Distinct().Take(entityLimit); // Take x distinct, random liked Entities                   
+            }
+            
+
+
             List<int> entids = new List<int>(); //list of Entity ID's
-            //DbSet<Entity> entities = db.Set<Entity>();
             List<Entity> entities = new List<Entity>();
-            List<EntityComment> comments = new List<EntityComment>();
-            List<EntityDescription> descriptions = new List<EntityDescription>();
             List<EntityTag> tags = new List<EntityTag>();
-            List<LikedEntity> lentities = new List<LikedEntity>();
+            List<string> tagNames = new List<string>();
             List<Photo> photos = new List<Photo>();
+            List<string> userNames = new List<string>();
+            List<UserProfile> userProfiles = new List<UserProfile>();
 
-            var entityids =
-                from lents in likedEnts
-                select lents.EntityId;
 
+            //get entities
             var entities_query = from ents in db.Entities
-                                 join lents in db.LikedEntities
+                                 join lents in likedEnts
                                  on ents.EntityId equals lents.EntityId
                                  join u in db.UserProfiles
                                  on lents.UserId equals u.UserId
+                                 orderby Guid.NewGuid()
                                  select ents;
-            //collect entity ids
-            //entities = entities_query;
+
+            //var userprofiles_query = from users in db.UserProfiles
+
             List<int> entIDS = new List<int>();
             foreach(var ent in entities_query)
             {
@@ -345,22 +313,85 @@ namespace MyWebsiteEntity.Controllers
                 entIDS.Add(ent.EntityId);
             }
 
+            List<LikedEntity> RandomLents = new List<LikedEntity>(); // used for matching up correct 
+                                                                     // entities and users
             foreach(var id in entIDS)
             {
-                descriptions.Add(db.EntityDescription.FirstOrDefault(u => u.EntityId.Equals(id)));
-                lentities.Add(db.LikedEntities.FirstOrDefault(u => u.EntityId.Equals(id)));
-
-                //THIS IS A 1 TO MANY RELATIONSHIP - CHANGE LATER
-                comments.Add(db.EntityComment.FirstOrDefault(u => u.EntityId.Equals(id)));
                 tags.Add(db.EntityTag.FirstOrDefault(u => u.EntityId.Equals(id)));
-
                 photos.Add(db.Photo.FirstOrDefault(u => u.EntityId.Equals(id)));
+                RandomLents.Add(db.LikedEntities.FirstOrDefault(u => u.EntityId.Equals(id)));
             }
 
-            MainViewModel main = new MainViewModel(user, entities, comments, descriptions,
-                tags, lentities, photos, entityids);
+            foreach(var lent in RandomLents)
+            {
+                userNames.Add(lent.User.UserName);
+                userProfiles.Add(lent.User);
+            }
+
+            tagNames = getTagNames(tags);
+
+            MainViewModel main = new MainViewModel(userProfiles, entities,
+                tagNames, userNames, photos, entIDS);
 
             return View(main);
+        }
+
+        // Returns list of tag names
+        public List<string> getTagNames(List<EntityTag> tags)
+        {
+            List<string> tagNames = new List<string>();
+            foreach(EntityTag tag in tags)
+            {
+                if(tag.TagName == "1")
+                {
+                    tagNames.Add("Animals");
+                }
+                else if(tag.TagName == "2")
+                {
+                    tagNames.Add("Cars & Motorcycles");
+                }
+                else if (tag.TagName == "3")
+                {
+                    tagNames.Add("Fashion");
+                }
+                else if (tag.TagName == "4")
+                {
+                    tagNames.Add("Film, Music & Books");
+                }
+                else if (tag.TagName == "5")
+                {
+                    tagNames.Add("Food & Drink");
+                }
+                else if (tag.TagName == "6")
+                {
+                    tagNames.Add("Hair & Beauty");
+                }
+                else if (tag.TagName == "7")
+                {
+                    tagNames.Add("Humor");
+                }
+                else if (tag.TagName == "8")
+                {
+                    tagNames.Add("Photography");
+                }
+                else if (tag.TagName == "9")
+                {
+                    tagNames.Add("Sports");
+                }
+                else if (tag.TagName == "10")
+                {
+                    tagNames.Add("Technology");
+                }
+                else if (tag.TagName == "11")
+                {
+                    tagNames.Add("Travel");
+                }
+                else //other
+                {
+                    tagNames.Add("Other");
+                }
+            }
+            return tagNames;
         }
 
 

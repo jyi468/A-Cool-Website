@@ -24,20 +24,22 @@
         </div>
         <div class="pinUserAttribution">
             <a class="attributionItem firstAttribution " href="#">
-                <img class="attributionImg" style="" src="/images/profile-30.jpg" />
+                <img class="attributionImg" style="" src="/images/miew1.jpg" />
                 <span class="attributionTitle">
                     Posted by
                 </span>
                 <span class="attributionName">
                     July Mark
                 </span>
-            </a>
-            <a class="attributionItem lastAttribution " href="#">
-                <img class="attributionImg" style="" src="/images/profile-30.jpg" />
                 <span class="attributionTitle">
                     in
                 </span>
-                <span class="attributionName">Category</span>
+            </a>
+            @*<a class="attributionItem lastAttribution " href="#">
+                <span class="attributionTitle">
+                    in
+                </span>
+                <span class="attributionName">Category</span>*@
             </a>
         </div>
     </div-->
@@ -45,12 +47,29 @@
 
     @if (Model.Entities != null)
     {
-        foreach (var item in Model.Photo)
+        for (var i = 0; i < Model.Entities.Count(); i++)
         {  
             <div class="item open-model">
-                <a href="@Url.Action("CommentZoom", "Account", new { id = item.EntityId, url = item.PhotoURL })" class="forPartial" id="@item.EntityId">
-                    <img src="@Url.Content(item.PhotoURL)" />
+                <a href="@Url.Action("CommentZoom", "Account", new { id = Model.Photo[i].EntityId, url = Model.Photo[i].PhotoURL })" class="forPartial" id="@Model.Photo[i].EntityId">
+                    <img src="@Url.Content(Model.Photo[i].PhotoURL)" />
                 </a>
+                <div class="pinUserAttribution">
+                    <a class="attributionItem firstAttribution " href="#">
+                        <img class="attributionImg" style="" src="/images/miew1.jpg" />
+                        <span class="attributionTitle">
+                            Posted by
+                        </span>
+                        <span class="attributionName">
+                            @Model.UserProfiles[i].UserName
+                        </span>
+                    </a>
+                    <a class="attributionItem lastAttribution " href="#">
+                        <span class="attributionTitle">
+                            in
+                        </span>
+                        <span class="attributionName">@Model.TagNames[i]</span>
+                    </a>
+                </div>
             </div>
         }
     }
