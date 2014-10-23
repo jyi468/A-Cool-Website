@@ -298,6 +298,7 @@
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\d1.gif" />
     <Content Include="Images\d2.gif" />
+    <Content Include="Images\default_profile.jpg" />
     <Content Include="Images\image1.jpg" />
     <Content Include="Images\Laptop_Scratch.png" />
     <Content Include="Images\logo.png" />

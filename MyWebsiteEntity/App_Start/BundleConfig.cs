@@ -49,9 +49,14 @@ namespace MyWebsiteEntity
                 "~/Content/font-awesome.css",
                 "~/Content/font-awesome.min.css"));
 
-            bundles.Add(new StyleBundle("~/Content/profile").Include("~/Content/StyleSheet - Profile.css"));
+            //bundles.Add(new StyleBundle("~/Content/profile").Include("~/Content/StyleSheet - Profile.css"));
 
-            bundles.Add(new StyleBundle("~/Content/settings").Include("~/Content/StyleSheet - Settings.css"));
+            //bundles.Add(new StyleBundle("~/Content/settings").Include("~/Content/StyleSheet - Settings.css"));
+
+            bundles.Add(new StyleBundle("~/Content/PandS").Include(
+                "~/Content/StyleSheet - Profile.css",
+                "~/Content/StyleSheet - Settings.css"
+                ));
 
             bundles.Add(new ScriptBundle("~/Scripts/jquery").Include(
             "~/Scripts/cappy_jquery.js",
@@ -60,10 +65,6 @@ namespace MyWebsiteEntity
             "~/Scripts/jquery.unobstrusive-ajax.min.js"
             ));
 
-            bundles.Add(new StyleBundle("~/Scripts/PandS").Include(
-                "~/Scripts/StyleSheet - Profile.css",
-                "~/Scripts/StyleSheet - Settings.css"
-                ));
         }
     }
 }

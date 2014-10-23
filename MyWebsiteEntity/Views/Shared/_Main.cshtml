@@ -69,7 +69,8 @@
                         <div class="Profile">
                             <a href="#">
                                 <div class="ProfileLink">
-                                    <span class="ProfileImage" style="background-image:url(/images/miew1.jpg)"></span>
+                                    <!--span class="ProfileImage" ></span-->
+                                    <img class="ProfileImage" @*src="Url.Content(Model.CurrentUser.Profile)"*@ />
                                     <span class="ProfileName">
                                         @User.Identity.Name
                                     </span>

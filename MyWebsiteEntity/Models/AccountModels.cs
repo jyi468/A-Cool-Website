@@ -43,6 +43,7 @@ namespace MyWebsiteEntity.Models
 
     public class MainViewModel
     {
+        public UserProfile CurrentUser { get; set; }
         public IList<UserProfile> UserProfiles { get; set; }
         public IList<Entity> Entities { get; set; }
         public IList<string> TagNames { get; set; }
@@ -50,9 +51,10 @@ namespace MyWebsiteEntity.Models
         public IList<Photo> Photo { get; set; }
         public IList<int> EntityIds { get; set; }
 
-        public MainViewModel(IList<UserProfile> _userProfiles, IList<Entity> _entities, IList<string> _tagNames,
+        public MainViewModel(UserProfile _currentUser, IList<UserProfile> _userProfiles, IList<Entity> _entities, IList<string> _tagNames,
             IList<string> _userNames, IList<Photo> _photo, IList<int> _entityids)
         {
+            CurrentUser = _currentUser;
             UserProfiles = _userProfiles;
             Entities = _entities;
             TagNames = _tagNames;

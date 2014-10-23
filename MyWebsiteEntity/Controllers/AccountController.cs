@@ -236,7 +236,7 @@ namespace MyWebsiteEntity.Controllers
         // POST: /Account/Settings
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Settings(SettingsModel model, HttpPostedFileBase file)
+        public ActionResult Settings(HttpPostedFileBase file)
         {
             using (UsersContext db = new UsersContext())
             {
@@ -251,15 +251,15 @@ namespace MyWebsiteEntity.Controllers
                     file.SaveAs(path);
 
                 }
-                /*db.Entry(user).State = EntityState.Modified;
-                var dbC = ((IObjectContextAdapter)db).ObjectContext;
+                db.Entry(user).State = EntityState.Modified;
+                /*var dbC = ((IObjectContextAdapter)db).ObjectContext;
 
                 var refreshableObjects = db.ChangeTracker.Entries().Select(c => c.Entity).ToList();
-                dbC.Refresh(RefreshMode.StoreWins, refreshableObjects);
-                db.SaveChanges();*/
+                dbC.Refresh(RefreshMode.StoreWins, refreshableObjects);*/
+                db.SaveChanges();
                 RedirectToAction("Settings", "Account");
             }
-            return View(model);
+            return View();
         }
 
         // GET: /Account/Main
@@ -330,7 +330,7 @@ namespace MyWebsiteEntity.Controllers
 
             tagNames = getTagNames(tags);
 
-            MainViewModel main = new MainViewModel(userProfiles, entities,
+            MainViewModel main = new MainViewModel(user, userProfiles, entities,
                 tagNames, userNames, photos, entIDS);
 
             return View(main);
@@ -488,6 +488,7 @@ namespace MyWebsiteEntity.Controllers
                             UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.Equals(model.UserName));
 
                             user.EmailAddress = model.EmailAddress;
+                            user.Profile = "~/Images/default_profile.jpg";
 
                             db.Entry(user).State = EntityState.Modified;
 

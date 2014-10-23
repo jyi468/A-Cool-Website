@@ -5,10 +5,11 @@
     Layout = "~/Views/Shared/_Main.cshtml";
 }
 
-@using (Html.BeginForm("Settings", "Account", FormMethod.Post, new { enctype ="multipart/form-data" }))
+@using (Html.BeginForm("Settings", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
+
 
 <div class="definitions">
     <h1>Account Settings</h1>
@@ -18,7 +19,7 @@
                 Edit Profile
             </h2>
         </li>
-        <li>
+        @*<li>
             <h3>
                 <label>
                     Name
@@ -44,16 +45,15 @@
             </h3>
             <div>
                 http://Cappy.com/
-                @*@Html.TextBoxFor(m => m.UserName)*@
+                @Html.TextBoxFor(m => m.UserName)
             </div>
-        </li>
+        </li>*@
         <li>
             <h3>
                 Photo
             </h3>
             <div>
-
-                <input id="upload" type="file" name="pic" accept="image/*" />
+                <input id="upload" type="file" name="file" accept="image/*" />
             </div>
         </li>
         <li>
@@ -91,7 +91,7 @@
                 </fieldset>
             </div>
         </li>
-        <li>
+        @*<li>
             <h3>
                 <label>
                     Email Address
@@ -100,7 +100,7 @@
             <div>
                 @Html.TextBoxFor(m => m.EmailAddress)
             </div>
-        </li>
+        </li>*@
         <li>
             <h3>
                 Password
@@ -171,12 +171,12 @@
             </button>
         </div>
         <div class="formFooterButtons">
-            <button class="rounded NavigateButton Button Module hasText cancel btn" type="button">
+            <button class="rounded NavigateButton Button Module hasText cancel btn" type="button" onclick="location.href='@Url.Action("Main","Account")'">
                 <span class="buttonText">
                     Cancel
                 </span>
             </button>
-            <button class="rounded Button primary Module hasText btn saveSettingsButton" runat="server" id="SaveSettings" type="submit">
+            <button class="rounded Button primary Module hasText btn saveSettingsButton" type="submit">
                 <span class="buttonText">
                     Save Settings
                 </span>
