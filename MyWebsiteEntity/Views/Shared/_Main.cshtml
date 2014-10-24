@@ -169,17 +169,58 @@
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary()
-            <div class="logout-content dp-none">
-                <div class="logoutmodel">
-                    <div class="logoutForm">
+            <div class="logout-content dp-none" id="logout1">
+                <div class="logoutmodel" id="logout2">
+                    <div class="logoutForm" id="logout3">
                         <h1>
-                            Logout?
+                            Logout
                         </h1>
+                        <ul>
+                            <li>
+                                <h3>
+                                    <label>
+                                        Are you sure you want to logout?
+                                    </label>
+                                </h3>
+                            </li>
+                        </ul>
+                        <div class="formFooter">
+                            <div class="logoutFooterButtons">
+                                <input value="Cancel" class="Button btn close-logoutpopup" id="logoutButton" type="button" />
+
+                                <input value="Logout" name="Logout" class="Button primary btn" type="submit" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- *** END   - logout *** -->
+        }
+
+        @using (Html.BeginForm("DeleteComment", "Account"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+            <div class="logout-content dp-none" id="delete1">
+                <div class="logoutmodel" id="delete2">
+                    <div class="logoutForm" id="delete3">
+                        <h1>
+                            Delete Comment
+                        </h1>
+                        <ul>
+                            <li>
+                                <h3>
+                                    <label>
+                                        Are you sure you want to delete this comment (can't be undone)?
+                                    </label>
+                                </h3>
+                            </li>
+                        </ul>
                         <div class="formFooter">
                             <div class="logoutFooterButtons">
                                 <input value="Cancel" class="Button btn close-modelpopup" type="button" />
 
-                                <input value="Logout" name="Logout" class="Button primary btn" type="submit" />
+                                <input value="Delete" name="Delete" class="Button primary btn" id="deleteButton" type="submit" />
                             </div>
                         </div>
                     </div>

@@ -4,8 +4,12 @@
 
     /**********************/
     /*   Main-Content     */
+
+
+
     model_container = $('.model-container');
 
+    //Load comment into comment zoom
     $('#main-inner').on("click", ".primary", function () {
         theComment = $('.commentContent').val();
         theId = $('.primary').attr('id');
@@ -14,6 +18,33 @@
         $('.listComments').load("/Account/Comment", { id : theId, url: theUrl, comment: theComment });
         return false;
     });
+
+    /**************/
+    /*   Delete (derived from logout)   */
+    /**************/
+
+    toggleCommentDelete = function () {
+        $('model-container').toggleClass('body-locked');
+        $('#delete1').toggleClass('dp-block');
+    };
+
+    $('.PinDeleteCommentButton').on('click', toggleCommentDelete);
+    $('#deleteButton').on('click', toggleCommentDelete);
+
+    /**************/
+    /*   Logout   */
+    /**************/
+    close_logoutmodelpopup = $('#logoutButton');
+    logoutcontent = $('.logout');
+    logout_modelcontent = $('#logout1');
+
+    toggleLogoutContentPopUp = function () {
+        body.toggleClass('body-locked');
+        logout_modelcontent.toggleClass('dp-block');
+    };
+
+    logoutcontent.on('click', toggleLogoutContentPopUp);
+    close_logoutmodelpopup.on('click', toggleLogoutContentPopUp)
 
 
     // Make body locked and dim out background
@@ -96,20 +127,7 @@
     addcontent.on('click', toggleNewContentPopUp);
     close_modelpopup.on('click', toggleNewContentPopUp);
 
-    /**************/
-    /*   Logout   */
-    /**************/
-    close_logoutmodelpopup = $('.close-logoutpopup');
-    logoutcontent = $('.logout');
-    logout_modelcontent = $('.logout-content');
 
-    toggleLogoutContentPopUp = function () {
-        body.toggleClass('body-locked');
-        logout_modelcontent.toggleClass('dp-block');
-    };
-
-    logoutcontent.on('click', toggleLogoutContentPopUp);
-    logout_modelcontent.on('click', toggleLogoutContentPopUp)
 
 
     /***************/

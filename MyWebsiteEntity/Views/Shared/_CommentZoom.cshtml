@@ -37,7 +37,13 @@
                             for (var i = 0; i < Model.Comments.Count(); i++)
                             {
                                 <li>
-                                    <div class="pinDescriptionComment detailed">
+                                    <div class="pinDescriptionComment detailed" data-ph=@Model.CommentIds[i]>
+                                        @if (Model.UserNames[i] == User.Identity.Name)
+                                        {
+                                            <button class="PinDeleteCommentButton">
+                                                <em class="fa fa-times"></em>
+                                            </button>
+                                        }
                                         <a class="userThumbContainer" href="#">
                                             <img class="userThumb" alt="" src="/images/miew1.jpg" />
                                         </a>

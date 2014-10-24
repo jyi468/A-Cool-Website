@@ -224,6 +224,14 @@ Header .SearchForm {
     width: 275px;
 }
 
+.logoutForm > ul > li > h3 {
+    color: rgb(85, 85, 85);
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 4px 10px 0px 0px;
+}
+
 .logoutForm > h1{
     border-bottom: 1px solid rgb(231, 231, 231);
     color: rgb(51, 51, 51);
@@ -233,6 +241,22 @@ Header .SearchForm {
     padding: 17px 18px 13px;
     position: relative;
     text-align: center;
+}
+
+.logoutForm > ul{
+    border-radius: 3px 3px 3px 3px;
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    margin: 0px;
+}
+
+
+.logoutForm > ul > li:first-child {
+    border: 0px none;
+}
+.logoutForm > ul > li{
+    overflow: hidden;
+    border-top: 1px solid rgb(223, 223, 223);
+    padding: 15px 21px 15px 27px;
 }
 
 
@@ -936,6 +960,25 @@ a {
     height: 50px !important;
     width: 50px !important;
     padding: 0px 0px !important;
+}
+
+.PinDeleteCommentButton {
+    float: right;
+    top: 0px;
+    padding: 1px 1px 1px 1px;
+    background: #ffffff;
+    color: #D6D6D6;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #F5F5F5;
+
+}
+
+
+.PinDeleteCommentButton:hover{
+    color: #4F4F4F;
+    border-radius: 5px;
+    border-width: 1px;
 }
 
 .commenterNameCommentText {

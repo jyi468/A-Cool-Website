@@ -43,6 +43,23 @@ namespace MyWebsiteEntity.Controllers
             return View(main);
         }*/
 
+        public ActionResult DeleteComment(int commentNo, string url, int id)
+        {
+            using (UsersContext db = new UsersContext())
+            {
+                var commentToDelete =
+                    from comment in db.EntityComment
+                    where comment.CommentNo == commentNo
+                    select comment;
+
+                foreach (var c in commentToDelete)
+                {
+                    db.EntityComment.Remove(c);
+                }
+            }
+            return RedirectToAction("CommentZoom", "Account", new { id = id, url = url });
+        }
+
         //POST: comments
         [HttpPost]
         public ActionResult Comment(string comment, string url, int id)
@@ -101,15 +118,19 @@ namespace MyWebsiteEntity.Controllers
                                where c.EntityId == opEntityId
                                select c.Comment).ToList();
 
-                var users = (from u in db.UserProfiles
-                              join c in db.EntityComment
-                              on u.UserId equals c.UserId
-                              select u.UserName).ToList();
+                var commentIds = (from c in db.EntityComment
+                                  where c.EntityId == opEntityId
+                                  select c.CommentNo).ToList();
+
+                var users = (from c in db.EntityComment
+                             where c.EntityId == opEntityId
+                             select c.User.UserName).ToList();
 
                 // Create model containing description, current comments, UserId (OP)
                 // and commenters UserId's
 
                 model.UserNames = users;
+                model.CommentIds = commentIds;
                 model.Comments = comments;
                 model.opUserId = opUserId;
                 model.EntityId = opEntityId;

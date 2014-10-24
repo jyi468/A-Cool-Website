@@ -75,6 +75,7 @@ namespace MyWebsiteEntity.Models
     {
         public IList<string> UserNames { get; set; }
         public IList<string> Comments { get; set; }
+        public IList<int> CommentIds { get; set; }
 
         public int EntityId { get; set; }
         public int opUserId { get; set; }
