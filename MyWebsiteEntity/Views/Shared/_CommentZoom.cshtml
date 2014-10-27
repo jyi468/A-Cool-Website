@@ -40,7 +40,7 @@
                                     <div class="pinDescriptionComment detailed" data-ph=@Model.CommentIds[i]>
                                         @if (Model.UserNames[i] == User.Identity.Name)
                                         {
-                                            <button class="PinDeleteCommentButton">
+                                            <button class="PinDeleteCommentButton" data-ph=@Model.CommentIds[i]>
                                                 <em class="fa fa-times"></em>
                                             </button>
                                         }
@@ -49,15 +49,15 @@
                                         </a>
                                         <div class="commenterNameCommentText">
                                             <div class="commenterWrapper">
-                                                <a class="commentDescriptionCreator" href="#">
-                                                     @Html.DisplayFor(model => Model.UserNames[i])
+                                                <a class="commentDescriptionCreator" href="#" data-ph="@Model.EntityId">
+                                                    @Html.DisplayFor(model => Model.UserNames[i])
                                                 </a>
                                                 <span class="commentDescriptionTimeAgo">
                                                     • 4 days ago
                                                 </span>
                                             </div>
-                                            <h1 class="commentDescriptionContent">
-                                                    @Html.DisplayFor(model => Model.Comments[i])
+                                            <h1 class="commentDescriptionContent" >
+                                                @Html.DisplayFor(model => Model.Comments[i])
                                             </h1>
                                         </div>
                                     </div>

@@ -19,17 +19,33 @@
         return false;
     });
 
+    // Use for deleting comments
+    $(document).on("click", "#deleteButton", function () {
+        theCommentNo = $('.PinDeleteCommentButton').attr('data-ph');
+        theId = $('.commentDescriptionCreator').attr('data-ph'); //entity id
+        theUrl = $('.model-box').find('li').attr('src'); //photo url
+        //link = $('#buttonText').attr('id');
+        toggleCommentDelete;
+        //alert("deletebutton pressed")
+        $('.listComments').load("/Account/DeleteComment", { commentNo: theCommentNo, id: theId, url: theUrl  });
+        return false;
+    });
+
     /**************/
     /*   Delete (derived from logout)   */
     /**************/
 
     toggleCommentDelete = function () {
-        $('model-container').toggleClass('body-locked');
+        //$('model-container').toggleClass('body-locked');
+        body.toggleClass('body-locked');
         $('#delete1').toggleClass('dp-block');
+        //alert('gotClicked');
     };
 
-    $('.PinDeleteCommentButton').on('click', toggleCommentDelete);
-    $('#deleteButton').on('click', toggleCommentDelete);
+    //$('.PinDeleteCommentButton').on('click', toggleCommentDelete);
+
+    $(document).on('click', '.PinDeleteCommentButton', toggleCommentDelete);
+    $(document).on('click', '#cancelButton', toggleCommentDelete);
 
     /**************/
     /*   Logout   */

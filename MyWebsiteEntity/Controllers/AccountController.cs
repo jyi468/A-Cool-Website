@@ -56,6 +56,7 @@ namespace MyWebsiteEntity.Controllers
                 {
                     db.EntityComment.Remove(c);
                 }
+                db.SaveChanges();
             }
             return RedirectToAction("CommentZoom", "Account", new { id = id, url = url });
         }
