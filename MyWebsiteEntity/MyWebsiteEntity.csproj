@@ -303,6 +303,24 @@
     <Content Include="Images\Laptop_Scratch.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\miew1.jpg" />
+    <Content Include="Images\Pictures\bugatti1954concept.jpg" />
+    <Content Include="Images\Pictures\coolturtle.png" />
+    <Content Include="Images\Pictures\coupleblack.jpg" />
+    <Content Include="Images\Pictures\default_profile.jpg" />
+    <Content Include="Images\Pictures\Denis_Mukwege_VOA.jpg" />
+    <Content Include="Images\Pictures\Edison_Carbon_Bulb.jpg" />
+    <Content Include="Images\Pictures\el-bulli-tuna.jpg" />
+    <Content Include="Images\Pictures\Entity Model Database.png" />
+    <Content Include="Images\Pictures\giraffe-not-pleased.jpg" />
+    <Content Include="Images\Pictures\hair.jpg" />
+    <Content Include="Images\Pictures\karenGun.gif" />
+    <Content Include="Images\Pictures\KOBE.gif" />
+    <Content Include="Images\Pictures\Margaret_Bernardine_Hall_-_Fantine_-_Google_Art_Project.jpg" />
+    <Content Include="Images\Pictures\mensFashion.jpg" />
+    <Content Include="Images\Pictures\Musashino_in_the_afternoon.jpg" />
+    <Content Include="Images\Pictures\NIF.jpg" />
+    <Content Include="Images\Pictures\skyrim.jpg" />
+    <Content Include="Images\Pictures\wine-clubs.jpg" />
     <Content Include="Images\profile-140.jpg" />
     <Content Include="Images\profile-30.jpg" />
     <Content Include="Images\rain.jpg" />
@@ -382,7 +400,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\Pictures\" />
     <Folder Include="Images\profile\" />
   </ItemGroup>
   <ItemGroup>
